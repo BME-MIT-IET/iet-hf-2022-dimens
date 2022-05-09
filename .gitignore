@@ -3,6 +3,7 @@
 /.metadata/
 Skeleton/testoutput/testallfiles.txt
 Skeleton/src/.metadata/
+target
 
 # IntelliJ based Ide folders
 *.iml
