@@ -1,1 +1,2 @@
 # kavicxs_aszteroida
+
