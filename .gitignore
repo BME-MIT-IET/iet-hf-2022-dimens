@@ -1,10 +1,11 @@
 *.class
 /Skeleton/bin
+/.metadata/
 Skeleton/testoutput/testallfiles.txt
+Skeleton/src/.metadata/
 
 # IntelliJ based Ide folders
 *.iml
 *.iws
 *.ipr
 .idea
-out
