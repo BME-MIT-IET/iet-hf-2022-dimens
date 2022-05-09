@@ -1,0 +1,6 @@
+*.class
+/Skeleton/bin
+*.class
+*.class
+/.metadata/
+Skeleton/testoutput/testallfiles.txt
