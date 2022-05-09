@@ -1,0 +1,193 @@
+package asteroidgame;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+/**
+* Settler class that represents a Settler
+*/
+public class Settler extends Entity {
+	
+	static private int NUM=0;
+	/**
+	* Portals the Settler has
+	*/
+	private List<Portal> portals;
+	/**
+	* Settler's inventory
+	*/
+	private Inventory inventory;
+	
+	/**
+	* Constructor for initializing the Settler
+	* 
+	* @param a the asteroid that the Settler is on
+	*/
+	public Settler(Asteroid a) {
+		super(a);
+		Game.increaseNumberOfSettlers();
+		this.inventory = new Inventory();
+		this.portals = new ArrayList<Portal>(3);
+		Controller.add("S"+NUM++, this);
+	}
+
+	/**
+	* Settler mines the asteroid it is on
+	*/
+	public void mine() {
+		inventory.addMaterial(asteroid.getCore());
+		asteroid.removeMaterial();
+	}
+	
+	/**
+	* Settler drills the asteroid it is on
+	*/
+	public void drill() {
+		asteroid.removeLayer();
+	}
+	
+	/**
+	* Settler builds a pair of portals
+	*/
+	public void buildPortal() {
+		inventory.removeMaterial(new Iron());
+		inventory.removeMaterial(new Iron());
+		inventory.removeMaterial(new WaterIce());
+		inventory.removeMaterial(new Uran());
+		Portal p1 = new Portal();
+		Portal p2 = new Portal();
+		p1.setpair(p2);
+		p2.setpair(p1);
+		this.portals.add(p1);
+		this.portals.add(p2);	
+	}
+	
+	/**
+	* Settler builds a robot
+	*/
+	public void buildRobot() {
+		inventory.removeMaterial(new Iron());
+		inventory.removeMaterial(new Coal());
+		inventory.removeMaterial(new Uran());
+		Robot r = new Robot(asteroid);
+	}
+	
+	@Override
+	/**
+	* When the asteroid explodes, the Settler dies
+	*/
+	public void explode() {
+		this.die();
+	}
+	
+	@Override
+	/**
+	* When the Settler dies, it gets removed from the asteroid,
+	* then it gets removed from the game as well
+	*/
+	public void die() {
+		asteroid.removeEntity(this);
+		Game.removeEntity(this);
+		Game.decreaseNumberOfSettlers();
+	}
+	
+	/**
+	* Settler places a portal on the asteroid
+	*/
+	public void deployPortal() {
+		portals.remove(0).deploy(asteroid);
+	}
+	
+	/**
+	* Settler places material into the empty asteroid
+	* 
+	* @param m the material, which gets placed into the asteroid
+	*/
+	public void placeMaterial(Material m) {
+		asteroid.addMaterial(m);
+		inventory.removeMaterial(m);	
+	}
+	
+	
+	@Override
+	/**
+	* A telepes körönkénti léptetését végzi, a különbözõ parancsok beadásával - amit paraméterként kap (command) -
+	* lehet a telepest irányítani. A parancsok megtalálhatóak a bemeneti nyelv leírásánál.
+	* Minden beadott parancs 1 függvényhívást jelent. Itt történik a függvények feltételvizsgálata is,
+	* vagyis az, hogy az adott függvényt meg lehet-e hívni.
+	*/
+	public void step(String command) {
+		String[] cmd = command.split(" ");
+		switch (cmd[0]) {
+		
+		case "move": 
+			
+			int idx = Integer.parseInt(cmd[1]);
+			if (idx >= 0) this.move(asteroid.getNeighbours().get(idx));
+			else JOptionPane.showMessageDialog(null, "Can't move");
+			break;
+			
+		case "mine":
+			
+			if (Inventory.getMaxNumofMaterials() > inventory.getNumOfMaterials() && asteroid.mineable())
+				this.mine();
+			else JOptionPane.showMessageDialog(null, "Can't mine");
+			break;
+			
+		case "drill":
+			
+			if (asteroid.getNumOfLayers() > 0) this.drill();
+			else JOptionPane.showMessageDialog(null, "Can't drill");
+			break;
+			
+		case "build":
+			if (cmd[1].equals("-r") && inventory.hasMaterial(new Iron()) && inventory.hasMaterial(new Coal())
+				&& inventory.hasMaterial(new Uran())) {
+				this.buildRobot();
+			}
+			else if (cmd[1].equals("-p") && inventory.hasMaterial(new Iron(), 2) && inventory.hasMaterial(new WaterIce())
+				&& inventory.hasMaterial(new Uran())&&portals.size()<2)
+				this.buildPortal();
+			else JOptionPane.showMessageDialog(null, "Can't build");
+			break;
+			
+		case "deploy":
+			
+			if (!this.portals.isEmpty()) this.deployPortal();
+			else JOptionPane.showMessageDialog(null, "Can't deploy");
+			break;
+			
+		case "place":
+			Material m = Controller.createMaterial(cmd[1]);
+			if (asteroid.getNumOfLayers() == 0 && asteroid.getCore() == null && inventory.hasMaterial(m))
+				this.placeMaterial(m);
+			else JOptionPane.showMessageDialog(null, "Can't place");
+			break;
+		case "skip":
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "wrong command");
+			break;
+		}		
+	}
+	
+	/**
+	* Returns how many portals the settler has
+	* 
+	* @return the number of portals the settler has
+	*/
+	public int numOfPortals() {
+		return portals.size();
+	}
+	
+	/**
+	* Getter for inventory
+	* 
+	* @return the Settler's inventory
+	*/
+	public Inventory getInventory() {
+		return inventory;
+	}
+}
