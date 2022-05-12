@@ -12,10 +12,10 @@ public class Inventory {
 	/** The number of materials contained **/
 	private int numOfMaterials = 0;
 	/** The maximum number of materials can be contained **/
-	static private int maxNumofMaterials = 10;
+	private static int maxNumofMaterials = 10;
 
 	/** The contained materials **/
-	private HashMap<Integer, ArrayList<Material>> containedMaterials = new HashMap<Integer, ArrayList<Material>>();
+	private HashMap<Integer, ArrayList<Material>> containedMaterials = new HashMap<>();
 
 	/**
 	 * Adds the given material to the inventory.
@@ -24,7 +24,7 @@ public class Inventory {
 	 */
 	public void addMaterial(Material material) {
 		if (!containedMaterials.containsKey(material.getinventoryID())) {
-			containedMaterials.put(material.getinventoryID(), new ArrayList<Material>());
+			containedMaterials.put(material.getinventoryID(), new ArrayList<>());
 		}
 		containedMaterials.get(material.getinventoryID()).add(material);
 		numOfMaterials++;
@@ -53,12 +53,12 @@ public class Inventory {
 	/**
 	 * @return Returns an ArrayList which contains all the materials from the inventory
 	 * **/
-	public ArrayList<Material> materials_list()
+	public ArrayList<Material> materialsList()
 	{
-		ArrayList<Material> resultmaterials = new ArrayList<Material>();
+		ArrayList<Material> resultmaterials = new ArrayList<>();
 		Collection<ArrayList<Material>> materials = containedMaterials.values();
 		for (ArrayList<Material> eachlist : materials) {
-			if (eachlist.size() == 0)
+			if (eachlist.isEmpty())
 				continue;
 			for(Material m: eachlist)
 				resultmaterials.add(m);
@@ -97,9 +97,9 @@ public class Inventory {
 	/***
 	 * Counts the contained materials and returns the result in string format.
 	 * 
-	 * @return Returns a string which is formatted as: “C:number of contained Coals
+	 * @return Returns a string which is formatted as: ï¿½C:number of contained Coals
 	 *         I: number of contained Irons W:number of contained WaterIces U:number
-	 *         of contained Urans”
+	 *         of contained Uransï¿½
 	 */
 	public String list() {
 		int nI = 0;
@@ -109,7 +109,7 @@ public class Inventory {
 
 		Collection<ArrayList<Material>> materials = containedMaterials.values();
 		for (ArrayList<Material> eachlist : materials) {
-			if (eachlist.size() == 0)
+			if (eachlist.isEmpty())
 				continue;
 
 			switch (eachlist.get(0).getinventoryID()) {
@@ -124,6 +124,8 @@ public class Inventory {
 				break;
 			case 3:
 				nU = eachlist.size();
+				break;
+			default:
 				break;
 			}
 		}

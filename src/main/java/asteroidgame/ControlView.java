@@ -224,7 +224,7 @@ public class ControlView extends JPanel {
 		
 		placeMaterialMenu.removeAllItems();
 		//updating the combobox with the materials the settler can place in the asteroid
-		for (Material m : settler.getInventory().materials_list())
+		for (Material m : settler.getInventory().materialsList())
 			placeMaterialMenu.addItem(m.toString());
 	}
 }
