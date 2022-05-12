@@ -5,7 +5,7 @@ package asteroidgame;
  */
 public class Robot extends Entity {
 
-	static private int NUM = 0;
+	private static int number = 0;
 
 	/**
 	 * Constructor for initializing the Robot
@@ -14,7 +14,7 @@ public class Robot extends Entity {
 	 */
 	public Robot(Asteroid a) {
 		super(a);
-		Controller.add("R" + NUM++, this);
+		Controller.add("R" + number++, this);
 	}
 
 	/**
@@ -38,16 +38,16 @@ public class Robot extends Entity {
 
 	@Override
 	/**
-	 * A robot körönkénti léptetését végzi, a különbözõ parancsok beadásával - amit
-	 * paraméterként kap (command) - lehet a robotot irányítani, valamint az “AI” is
-	 * meg van emellett valósítva, ami random választja ki, hogy mit csináljon a
-	 * robot. A parancsok megtalálhatóak a bemeneti nyelv leírásánál. Minden beadott
-	 * parancs 1 függvényhívást jelent. Itt történik a függvények feltételvizsgálata
-	 * is, vagyis az, hogy az adott függvényt meg lehet-e hívni.
+	 * A robot kï¿½rï¿½nkï¿½nti lï¿½ptetï¿½sï¿½t vï¿½gzi, a kï¿½lï¿½nbï¿½zï¿½ parancsok beadï¿½sï¿½val - amit
+	 * paramï¿½terkï¿½nt kap (command) - lehet a robotot irï¿½nyï¿½tani, valamint az ï¿½AIï¿½ is
+	 * meg van emellett valï¿½sï¿½tva, ami random vï¿½lasztja ki, hogy mit csinï¿½ljon a
+	 * robot. A parancsok megtalï¿½lhatï¿½ak a bemeneti nyelv leï¿½rï¿½sï¿½nï¿½l. Minden beadott
+	 * parancs 1 fï¿½ggvï¿½nyhï¿½vï¿½st jelent. Itt tï¿½rtï¿½nik a fï¿½ggvï¿½nyek feltï¿½telvizsgï¿½lata
+	 * is, vagyis az, hogy az adott fï¿½ggvï¿½nyt meg lehet-e hï¿½vni.
 	 */
 	public void step(String command) {
 		Boolean canDrill = asteroid.getNumOfLayers() > 0;
-		Boolean hasNeighbour = asteroid.getNeighbours().size() > 0;
+		Boolean hasNeighbour = !asteroid.getNeighbours().isEmpty();
 
 		if (canDrill && hasNeighbour) {
 			double rand = Math.random();
@@ -56,11 +56,10 @@ public class Robot extends Entity {
 			else
 				this.drill();
 		} else {
-			if (canDrill)
+			if (Boolean.TRUE.equals(canDrill))
 				this.drill();
-			if (hasNeighbour)
+			if (Boolean.TRUE.equals(hasNeighbour))
 				this.move(asteroid.getNeighbours().get(0));
-			return;
 		}
 
 	}

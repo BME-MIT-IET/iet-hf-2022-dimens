@@ -5,7 +5,7 @@ package asteroidgame;
  */
 public class Ufo extends Entity {
 
-	static private int NUM = 0;
+	private static int number = 0;
 
 	/**
 	 * Constructor for initializing the UFO
@@ -14,7 +14,7 @@ public class Ufo extends Entity {
 	 */
 	public Ufo(Asteroid a) {
 		super(a);
-		Controller.add("UFO" + NUM++, this);
+		Controller.add("UFO" + number++, this);
 	}
 
 	/**
@@ -34,16 +34,16 @@ public class Ufo extends Entity {
 
 	@Override
 	/**
-	 * Az UFO körönkénti léptetését végzi, a különbözõ parancsok beadásával - amit
-	 * paraméterként kap (command) - lehet az UFO-t irányítani, valamint az “AI” is
-	 * meg van emellett valósítva, ami random választja ki, hogy mit csináljon a
-	 * robot. A parancsok megtalálhatóak a bemeneti nyelv leírásánál. Minden beadott
-	 * parancs 1 függvényhívást jelent. Itt történik a függvények feltételvizsgálata
-	 * is, vagyis az, hogy az adott függvényt meg lehet-e hívni.
+	 * Az UFO kï¿½rï¿½nkï¿½nti lï¿½ptetï¿½sï¿½t vï¿½gzi, a kï¿½lï¿½nbï¿½zï¿½ parancsok beadï¿½sï¿½val - amit
+	 * paramï¿½terkï¿½nt kap (command) - lehet az UFO-t irï¿½nyï¿½tani, valamint az ï¿½AIï¿½ is
+	 * meg van emellett valï¿½sï¿½tva, ami random vï¿½lasztja ki, hogy mit csinï¿½ljon a
+	 * robot. A parancsok megtalï¿½lhatï¿½ak a bemeneti nyelv leï¿½rï¿½sï¿½nï¿½l. Minden beadott
+	 * parancs 1 fï¿½ggvï¿½nyhï¿½vï¿½st jelent. Itt tï¿½rtï¿½nik a fï¿½ggvï¿½nyek feltï¿½telvizsgï¿½lata
+	 * is, vagyis az, hogy az adott fï¿½ggvï¿½nyt meg lehet-e hï¿½vni.
 	 */
 	public void step(String command) {
 		Boolean canMine = asteroid.mineable();
-		Boolean hasNeighbour = asteroid.getNeighbours().size() > 0;
+		Boolean hasNeighbour = !asteroid.getNeighbours().isEmpty();
 
 		if (canMine && hasNeighbour) {
 			double rand = Math.random();
@@ -52,11 +52,10 @@ public class Ufo extends Entity {
 			else
 				this.mine();
 		} else {
-			if (canMine)
+			if (Boolean.TRUE.equals(canMine))
 				this.mine();
-			if (hasNeighbour)
+			if (Boolean.TRUE.equals(hasNeighbour))
 				this.move(asteroid.getNeighbours().get(0));
-			return;
 		}
 
 	}

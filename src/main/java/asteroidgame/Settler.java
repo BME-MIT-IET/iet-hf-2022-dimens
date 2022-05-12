@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 * Settler class that represents a Settler
 */
 public class Settler extends Entity {
-	
-	static private int NUM=0;
+
+	private static int number = 0;
 	/**
 	* Portals the Settler has
 	*/
@@ -29,8 +29,8 @@ public class Settler extends Entity {
 		super(a);
 		Game.increaseNumberOfSettlers();
 		this.inventory = new Inventory();
-		this.portals = new ArrayList<Portal>(3);
-		Controller.add("S"+NUM++, this);
+		this.portals = new ArrayList<>(3);
+		Controller.add("S"+ number++, this);
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class Settler extends Entity {
 		inventory.removeMaterial(new Iron());
 		inventory.removeMaterial(new Coal());
 		inventory.removeMaterial(new Uran());
-		Robot r = new Robot(asteroid);
+		new Robot(asteroid);
 	}
 	
 	@Override
@@ -113,10 +113,10 @@ public class Settler extends Entity {
 	
 	@Override
 	/**
-	* A telepes körönkénti léptetését végzi, a különbözõ parancsok beadásával - amit paraméterként kap (command) -
-	* lehet a telepest irányítani. A parancsok megtalálhatóak a bemeneti nyelv leírásánál.
-	* Minden beadott parancs 1 függvényhívást jelent. Itt történik a függvények feltételvizsgálata is,
-	* vagyis az, hogy az adott függvényt meg lehet-e hívni.
+	* A telepes kï¿½rï¿½nkï¿½nti lï¿½ptetï¿½sï¿½t vï¿½gzi, a kï¿½lï¿½nbï¿½zï¿½ parancsok beadï¿½sï¿½val - amit paramï¿½terkï¿½nt kap (command) -
+	* lehet a telepest irï¿½nyï¿½tani. A parancsok megtalï¿½lhatï¿½ak a bemeneti nyelv leï¿½rï¿½sï¿½nï¿½l.
+	* Minden beadott parancs 1 fï¿½ggvï¿½nyhï¿½vï¿½st jelent. Itt tï¿½rtï¿½nik a fï¿½ggvï¿½nyek feltï¿½telvizsgï¿½lata is,
+	* vagyis az, hogy az adott fï¿½ggvï¿½nyt meg lehet-e hï¿½vni.
 	*/
 	public void step(String command) {
 		String[] cmd = command.split(" ");

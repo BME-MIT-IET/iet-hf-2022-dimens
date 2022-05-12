@@ -7,7 +7,7 @@ public abstract class Game {
 	/** Number of living settlers */
 	private static int numberOfSettlers = 0;
 	/** All steppable objects of the game */
-	private static ArrayList<Steppable> steppables = new ArrayList<Steppable>();
+	private static ArrayList<Steppable> steppables = new ArrayList<>();
 	/** Indicates whether the game is over or not */
 	private static boolean endGame = false;
 
@@ -86,12 +86,12 @@ public abstract class Game {
 	 * calling Field.initField(). Starts the game.
 	 */
 	public static void initGame() {
-		ArrayList<Entity> entities_list = new ArrayList<Entity>();
+		ArrayList<Entity> entitiesList = new ArrayList<>();
 		for (int i = 0; i < 4; i++) {
 			Settler settler = new Settler(null);
-			entities_list.add(settler);
+			entitiesList.add(settler);
 		}
-		Field.initField(entities_list);
+		Field.initField(entitiesList);
 		game();
 	}
 }

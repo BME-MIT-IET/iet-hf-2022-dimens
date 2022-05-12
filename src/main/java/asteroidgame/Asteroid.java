@@ -191,7 +191,7 @@ public class Asteroid implements INeighbour{
 		List<Material> current=new ArrayList<Material>();
 		for(Entity s: entities) {
 			if(s instanceof Settler) {
-				current.addAll(((Settler) s).getInventory().materials_list());
+				current.addAll(((Settler) s).getInventory().materialsList());
 			}
 		}
 		//removing every item from the victory condition that isa present here

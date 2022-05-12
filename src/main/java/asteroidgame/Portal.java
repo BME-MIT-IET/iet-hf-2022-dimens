@@ -104,7 +104,7 @@ public class Portal implements INeighbour, Steppable {
 	 */
 	@Override
 	public List<INeighbour> getNeighbours() {
-		List<INeighbour> neighbours = new ArrayList<INeighbour>();
+		List<INeighbour> neighbours = new ArrayList<>();
 		neighbours.add(parentasteroid);
 		neighbours.add(pair);
 		return neighbours;
@@ -115,7 +115,7 @@ public class Portal implements INeighbour, Steppable {
 	 */
 	@Override
 	public void step(String command) {
-		if (isMegkergult) {
+		if (Boolean.TRUE.equals(isMegkergult)) {
 			List<INeighbour> temp = parentasteroid.getNeighbours();
 			INeighbour original = parentasteroid;
 			for (INeighbour t : temp) {
