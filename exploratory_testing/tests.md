@@ -50,11 +50,11 @@ Mozgás a portál segítségével
 
 ## Megvalósítás
 
-Az összes telepessel csökkentsük azon aszteroidák vastagságát amik szükséges material-t tartalmaznak.
-Figyeljünk rá, hogy ugyan azzal a telepessel bányásyzuk ki az alapanyagokat.
-Ha megvannak a szükséges alapanyagok a telepessel építsünk egy portál párt.
+Az összes telepessel csökkentsük azon aszteroidák vastagságát, amik szükséges materialokat tartalmaznak.
+Figyeljünk rá, hogy ugyanazzal a telepessel bányásyzuk ki az alapanyagokat.
+Ha megvannak a szükséges alapanyagok, a telepessel építsünk egy portál-párt.
 Helyezzük le az egyiket egy aszteroidára.
-Több kör alatt mozogjunk át ezzel a telepessel egy az előzővel nem szomszédos aszteroidára.
+Több kör alatt mozogjunk át ezzel a telepessel egy, az előzővel nem szomszédos aszteroidára.
 Rakjuk le a portál párját.
 Mozogjunk a telepessel a portálon keresztül
 ## Eredmények
@@ -92,3 +92,27 @@ A teszt sikeresen végrehajtható.
 ![](images/base.png)
 ![](images/exposedwaterevaporates.png)
 ---
+# Build robot
+
+## Cél
+
+Egy telepessel megfelelő mennyiségű nyersanyagot (egy vas, egy szén, egy urán) gyűjteni, majd egy robotot építeni.
+## Megvalósítás
+
+A szomszédos aszteroidákat listázó legördülő menüből mindig olyan aszteroidát válasszunk, amivel közelebb kerülünk
+a megfelelő nyersanyagokat tartalmazó aszteroidákhoz, fúrjuk ki őket, bányásszuk ki a nyersanyagot, majd ha megvan
+a megfelelő mennyiség, építsük meg a robotot.
+
+
+## Eredmények
+
+A nyersanyaggyűjtés megvalósítható, de a robot építése hibára fut:
+
+![](images/buildrobot_exception.png)
+![](images/buildrobot_failed.png)
+
+A hiba (`ConcurrentModificationException`) a Game osztály game() metódusában, a Steppable objektumok léptetéséért
+felelős ciklusban következik be. A robot megépítésével egy külön szálról új objektum kerülne a Steppable elemeket
+tartalmazó listába, amin azonban még iterál az eredet metódus is.
+A megoldás szálbiztos kollekció használata lehet. Például a `java.util.concurrent.CopyOnWriteArrayList<E>` osztály
+megfelelő lenne, ennek `add(E e)` függvénye szálbiztos.
