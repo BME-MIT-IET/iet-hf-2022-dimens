@@ -13,6 +13,7 @@ public abstract class Field {
 	 * Attribute for the remaining rounds until the next sunstorm.
 	 */
 	private static int timeToSunStorm;
+	private static Random rand = new Random();
 
 	/**
 	 * The asteroids, which are contained by the field
@@ -20,15 +21,17 @@ public abstract class Field {
 	private static List<Asteroid> asteroids = new ArrayList<>();
 	static Ufo u1;
 	static Ufo u2;
-	
+
+
+	private Field(){}
 	/**
 	 * Iterates through all the contained asteroids, end changes their sunClose attribute, if its needed
 	 */
-	public static void changeSunGroup(Asteroid k) {
+	public static void changeSunGroup() {
 
 			for(Asteroid a : asteroids) {
-				Random rnd = new Random();
-				int n = rnd.nextInt(2);
+
+				int n = rand.nextInt(2);
 				if(n == 0) {
 					a.changeSunCLose();
 				}
@@ -42,8 +45,8 @@ public abstract class Field {
 	 * Represents the sun storm in the game.
 	 */
 	public static void sunStorm() {
-		Random rnd = new Random();
-		int n = rnd.nextInt(asteroids.size());
+
+		int n = rand.nextInt(asteroids.size());
 		asteroids.get(n).burn(3);
 	}
 
@@ -98,9 +101,8 @@ public abstract class Field {
 		asteroids.get(5).addNeighbour(asteroids.get(17));
 		asteroids.get(13).addNeighbour(asteroids.get(15));
 		asteroids.get(15).addNeighbour(asteroids.get(13));
-		Random rnd = new Random();
 		for(Asteroid as : asteroids) {
-			as.setNumOfLayers(rnd.nextInt(5)+1);
+			as.setNumOfLayers(rand.nextInt(5)+1);
 		}
 		asteroids.get(0).addMaterial(new Iron());
 		asteroids.get(1).addMaterial(new Coal());

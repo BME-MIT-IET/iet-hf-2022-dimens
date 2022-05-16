@@ -1,5 +1,7 @@
 package asteroidgame;
 import java.util.HashMap;
+import java.util.Map;
+
 /**The controller of the MVC model**/
 public abstract class Controller {
 	/**the main window of the game*/
@@ -62,7 +64,7 @@ public abstract class Controller {
 	
 	/**Gets entity by name from hashmap*/
 	public static String getEntityNameByValue(Entity e) {
-		for (HashMap.Entry<String, Entity> a : entities.entrySet()) {
+		for (Map.Entry<String, Entity> a : entities.entrySet()) {
 		    String key = a.getKey();
 		    Entity value = a.getValue();
 		    if(value == e) {

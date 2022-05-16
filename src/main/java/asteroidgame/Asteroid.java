@@ -40,9 +40,9 @@ public class Asteroid implements INeighbour{
 	public Asteroid(){
 		Field.addAsteroid(this);
 		core=null;
-		entities=new ArrayList<Entity>();
+		entities=new ArrayList<>();
 		sunClose=false;
-		neighbours=new ArrayList<INeighbour>();
+		neighbours=new ArrayList<>();
 		numOfLayers=DEFAULTLAYER;
 	}
 	
@@ -151,11 +151,9 @@ public class Asteroid implements INeighbour{
 	 * @param n this deep does the recursion goes in the neighbour connections
 	 */
 	public void burn(int n){
-	
-		if(n==0) return;
-		else {
+		if(n > 0) {
 			if(numOfLayers!=0||core!=null)
-				while(entities.size()>0)
+				while(!entities.isEmpty())
 					entities.get(0).die();
 			for(int i=0;i<neighbours.size();i++)
 				neighbours.get(i).burn(n-1);
@@ -177,7 +175,7 @@ public class Asteroid implements INeighbour{
 	public boolean isVictory() {
 		
 		//creating a list full of the Materials needed to win 
-		List<Material> allm=new ArrayList<Material>();
+		List<Material> allm=new ArrayList<>();
 		for(int i=0;i<3;i++)
 			allm.add(new Iron());
 		for(int i=0;i<3;i++)
@@ -188,7 +186,7 @@ public class Asteroid implements INeighbour{
 			allm.add(new Uran());
 		
 		//putting all Materials of settlers ont the asteroid in a list
-		List<Material> current=new ArrayList<Material>();
+		List<Material> current=new ArrayList<>();
 		for(Entity s: entities) {
 			if(s instanceof Settler) {
 				current.addAll(((Settler) s).getInventory().materialsList());
@@ -217,8 +215,8 @@ public class Asteroid implements INeighbour{
 	 * Set the sunClose attrib to the given value
 	 * @param SC True if the Asteroid gets close to Sun, false if it gets away from the Sun
 	 */
-	public void setSunClose(boolean SC) {
-		sunClose=SC;
+	public void setSunClose(boolean sunClose) {
+		this.sunClose = sunClose;
 	}
 	
 	/**

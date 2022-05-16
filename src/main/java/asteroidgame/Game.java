@@ -67,7 +67,7 @@ public abstract class Game {
 				}
 			}
 			Field.decreaseTimer();
-			Field.changeSunGroup(null);
+			Field.changeSunGroup();
 			
 			if(Field.checkWin()) {
 				System.out.println("VICTORY");

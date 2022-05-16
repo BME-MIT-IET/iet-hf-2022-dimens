@@ -149,7 +149,7 @@ public class ControlView extends JPanel {
 		add(timeToSunstorm);
 		
 		//list of the asteroid's neighbour
-		moveMenu = new JComboBox<String>();
+		moveMenu = new JComboBox<>();
 		gbc.gridx = 0; gbc.gridy = 12;
 		gbc.gridwidth = 1; gbc.gridheight = 1;
 		gbc.fill = GridBagConstraints.BOTH;
@@ -163,7 +163,7 @@ public class ControlView extends JPanel {
 		add(moveMenu);
 		
 		//lists the materials the settler can place into the empty asteroid
-		placeMaterialMenu = new JComboBox<String>();
+		placeMaterialMenu = new JComboBox<>();
 		gbc.gridx = 2; gbc.gridy = 12;
 		gbc.gridwidth = 1; gbc.gridheight = 1;
 		gbc.fill = GridBagConstraints.BOTH;
@@ -184,7 +184,7 @@ public class ControlView extends JPanel {
 	public void refreshButtons(Settler settler) {
 		
 		//setting the text of labels based of the given settler
-		timeToSunstorm.setText("Time to sunstorm: " + String.valueOf(Field.getTimeToSunStorm()));
+		timeToSunstorm.setText("Time to sunstorm: " + Field.getTimeToSunStorm());
 		settlerInventory.setText(settler.getInventory().list());
 		sLabel.setText("Settler: " + Controller.getEntityNameByValue(settler));
 		
@@ -196,7 +196,7 @@ public class ControlView extends JPanel {
             
             if (n.getClass() == Asteroid.class) {
                 for(int i=0;i<Field.getAsteroids().size();i++)
-                    if (Field.getAsteroids().get(i).equals((Asteroid)n)) {
+                    if (Field.getAsteroids().get(i).equals(n)) {
                         name="a"+(i+1);
                         break;
                     }

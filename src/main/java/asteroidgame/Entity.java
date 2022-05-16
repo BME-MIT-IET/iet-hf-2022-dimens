@@ -44,12 +44,7 @@ public abstract class Entity implements Steppable {
 	* After the asteroid explodes, all the Entities on it also explode
 	*/
 	public abstract void explode();
-	
-	@Override
-	/**
-	* Entity steps
-	*/
-	public abstract void step(String command);
+
 	
 	/*-----getters and setters-----*/
 	
