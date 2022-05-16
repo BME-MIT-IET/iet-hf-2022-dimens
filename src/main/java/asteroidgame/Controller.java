@@ -3,13 +3,13 @@ import java.util.HashMap;
 /**The controller of the MVC model**/
 public abstract class Controller {
 	/**the main window of the game*/
-	static private Window window;
+	private static Window window;
 	/**Boolean that indicates whether a button was clicked*/
-	static private boolean clicked = false;
+	private static boolean clicked = false;
 	/**The string representation of the given command*/
-	static public String COMMAND;
+	public static String command;
 	/**All entities*/
-	static private HashMap <String, Entity> entities = new HashMap<String, Entity>();
+	private static HashMap <String, Entity> entities = new HashMap<>();
 	/**Adds entity to the game**/
 	public static void add(String name, Entity entity) {
 		entities.put(name, entity);
@@ -27,11 +27,10 @@ public abstract class Controller {
 	 *Loop until 'clicked' will be true
 	 *@return The thread which is waiting.
 	 * */
-	public static Thread ButtonClick(Settler settler) {
+	public static Thread buttonClick(Settler settler) {
 		window.refreshView(settler);
 		clicked = false;
-		Thread t = new Thread() {
-			public void run() {
+		Thread t = new Thread( () -> {
 				while (true) {
 					if (clicked)
 						break;
@@ -39,17 +38,17 @@ public abstract class Controller {
 						try {
 							Thread.sleep(100);
 						} catch (Exception e) {
+							Thread.currentThread().interrupt();
 						}
 				}
-			}
-		};
+		});
 		t.start();
 		return t;
 	}
 	
 	/**Event handler method for commands*/
 	public static void performCommand(String command) {
-		COMMAND = command;
+		Controller.command = command;
 		clicked = true;
 	}
 	
@@ -90,6 +89,8 @@ public abstract class Controller {
 		case "uran":
 			material = new Uran();
 			break;
+		default:
+			throw new UnsupportedOperationException("Unknown material");
 		}
 		return material;
 	}
