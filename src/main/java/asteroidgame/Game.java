@@ -60,7 +60,7 @@ public abstract class Game {
 						t.join();
 					}
 					catch(Exception e) {}
-					settler.step(Controller.command);
+					settler.step(Controller.getCommand());
 					steppedSettlers++;
 				} else {
 					each.step("");

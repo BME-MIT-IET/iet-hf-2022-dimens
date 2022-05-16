@@ -7,7 +7,10 @@ public abstract class Controller {
 	/**Boolean that indicates whether a button was clicked*/
 	private static boolean clicked = false;
 	/**The string representation of the given command*/
-	public static String command;
+	private static String command;
+	public static String getCommand(){
+		return command;
+	}
 	/**All entities*/
 	private static HashMap <String, Entity> entities = new HashMap<>();
 	/**Adds entity to the game**/
