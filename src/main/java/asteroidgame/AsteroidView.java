@@ -90,7 +90,7 @@ public class AsteroidView{
 
 		}
 		entities = builder.toString();
-		if(entities.equals("")) {
+		if(!entities.equals("")) {
 			entities = entities.substring(0, entities.length() - 2);
 		}
 
