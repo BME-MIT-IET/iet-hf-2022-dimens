@@ -69,6 +69,29 @@ Valamint az is, hogy a telepes sikeresen mozgatható.
 ![](images/movethroughportal.png)
 ---
 
+# Exposed waterice evaporates when sun is close
+
+## Cél
+
+Nézzük meg hogy a waterice tényleg elpárolog e ha a feltételek teljesülnek.
+
+## Megvalósítás
+
+Keressünk egy aszteroidát ami waterice-t tartalmaz
+
+Csökkentsük rétegeinek számát 0ra.
+
+skippeljünk minden telepessel addig amig az előző aszteroida napközelbe kerül.
+
+Ekkor a waterice-nak el kell párolognia.
+
+## Eredmények
+
+A teszt sikeresen végrehajtható.
+
+![](images/base.png)
+![](images/exposedwaterevaporates.png)
+---
 # Build robot
 
 ## Cél
