@@ -27,8 +27,7 @@ public abstract class Material {
 	public boolean equals(Object other) {
 		if(!(other instanceof Material))
 			return false;
-		if (inventoryID == ((Material)other).inventoryID)
-			return true;
-		return false;
+		return (inventoryID == ((Material)other).inventoryID);
+
 	}
 }

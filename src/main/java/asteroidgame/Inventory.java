@@ -53,7 +53,7 @@ public class Inventory {
 	/**
 	 * @return Returns an ArrayList which contains all the materials from the inventory
 	 * **/
-	public ArrayList<Material> materialsList()
+	public List<Material> materialsList()
 	{
 		ArrayList<Material> resultmaterials = new ArrayList<>();
 		Collection<ArrayList<Material>> materials = containedMaterials.values();

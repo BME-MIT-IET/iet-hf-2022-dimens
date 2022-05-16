@@ -20,7 +20,7 @@ public class FieldPanel extends JPanel {
 	/**
 	 * list of asteroidviews
 	 */
-	ArrayList<AsteroidView> asteroidviews = new ArrayList<AsteroidView>();
+	transient ArrayList<AsteroidView> asteroidviews = new ArrayList<AsteroidView>();
 	/**
 	 * layout for the asteroidviews
 	 */
@@ -55,6 +55,7 @@ public class FieldPanel extends JPanel {
 	/**
 	 * Cycles through all the asteroids and draws them to the panel
 	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		getViewByAsteroid((Graphics2D) g);
 		for(AsteroidView i : asteroidviews) {
