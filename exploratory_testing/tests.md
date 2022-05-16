@@ -59,6 +59,7 @@ Mozogjunk a telepessel a portálon keresztül
 A teszt sikeresen végrehajtható.
 A képeken látszik, hogy a mozgáshoz felkínált célaszteroidák között megjelent a portálos is. (a11)
 Valamint az is, hogy a telepes sikeresen mozgatható.
+
 ![](images/buildportalend.png)
 ![](images/movethroughportal.png)
 ---
