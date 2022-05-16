@@ -1,11 +1,11 @@
 Feature: Building
 
   Scenario: Robot
-    Given settler with material to build robot
+    Given settler has 1 iron, 1 coal, 1 uran to build robot
     Then settler can build robot
 
   Scenario: Portal
-    Given settler with material to build portals
+    Given settler has 2 irons, 1 waterice, 1 uran to build portals
     Then settler can build portal
 
   Scenario: Fail
