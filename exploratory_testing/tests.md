@@ -93,3 +93,21 @@ felelős ciklusban következik be. A robot megépítésével egy külön szálr�
 tartalmazó listába, amin azonban még iterál az eredet metódus is.
 A megoldás szálbiztos kollekció használata lehet. Például a `java.util.concurrent.CopyOnWriteArrayList<E>` osztály
 megfelelő lenne, ennek `add(E e)` függvénye szálbiztos.
+
+# Defeat
+
+## Cél
+
+Egy telepesekkel maradjunk egy nem teljesen kifúrt aszteroidán, és várjuk meg, amíg egy napvihar megöli őket.
+## Megvalósítás
+
+Sokféleképpen megoldható, célszerűen a játék kezdetétől minden telepes pihenjen minden körben a `skip` gombbal (a 
+napviharok térben nemdeterminisztikusak, úgyhogy javasolt a Field osztályban az ezért felelős metódusokat(`sunStorm()`
+és `decreaseTimer()`) megfelelően módosítani, hogy hamar napviharhoz érjünk).
+
+
+## Eredmények
+
+Kivárva a napvihart a telepesek tényleg meghalnak, és ezzel a játékot is elveszítjük:
+
+![](images/defeat.png)
