@@ -28,7 +28,6 @@ public class ControlView extends JPanel {
 	 * Constructor for constructing the panel
 	 */
 	public ControlView() {
-		//we are working with gridbaglayout
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();		
 		setLayout(gb);
