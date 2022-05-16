@@ -43,8 +43,11 @@ A teszt sikeresen végrehajtható.
 
 Portálhoz szükséges alapanyagok összegyűjtése egy telepesnél. (2 iron, 1 water, 1 uran)
 Portál építése.
+
 Portálok lehelyezése két nem szomszédos aszteroidára. (a13 és a11)
+
 Mozgás a portál segítségével
+
 ## Megvalósítás
 
 Az összes telepessel csökkentsük azon aszteroidák vastagságát amik szükséges material-t tartalmaznak.
@@ -57,7 +60,9 @@ Mozogjunk a telepessel a portálon keresztül
 ## Eredmények
 
 A teszt sikeresen végrehajtható.
+
 A képeken látszik, hogy a mozgáshoz felkínált célaszteroidák között megjelent a portálos is. (a11)
+
 Valamint az is, hogy a telepes sikeresen mozgatható.
 
 ![](images/buildportalend.png)
