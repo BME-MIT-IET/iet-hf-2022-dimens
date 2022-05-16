@@ -9,3 +9,6 @@ Jelen esetben
 
 ##Eredmények
 a teszt sikeresen végrehajtható.
+![](images/movesettlerstart.png)
+![](images/movesettlerend.png)
+---
