@@ -1,3 +1,5 @@
+package stepdefinitions;
+
 import asteroidgame.Asteroid;
 import asteroidgame.Coal;
 import asteroidgame.Settler;
@@ -7,7 +9,7 @@ import io.cucumber.java.en.Then;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MiningStepdefs {
+public class MiningStepDefinitions {
     public Asteroid asteroid;
     public Settler settler;
     @Given("asteroid has resource and layercount is {int}")
