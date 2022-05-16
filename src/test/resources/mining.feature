@@ -9,6 +9,6 @@ Feature: Mining
     Then settler can't mine
 
   Scenario: Fail2
-    Given asteroid layerCount is not 0
+    Given asteroid layerCount is 2
     Then settler can't mine
 
