@@ -17,7 +17,7 @@ public abstract class Field {
 	/**
 	 * The asteroids, which are contained by the field
 	 */
-	private static List<Asteroid> asteroids = new ArrayList<Asteroid>();
+	private static List<Asteroid> asteroids = new ArrayList<>();
 	static Ufo u1;
 	static Ufo u2;
 	
