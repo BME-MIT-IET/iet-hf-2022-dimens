@@ -55,7 +55,6 @@ public class Portal implements INeighbour, Steppable {
 	public void accept(Entity s) {
 		if (pair == null || pair.getAsteroid() == null) {
 			parentasteroid.accept(s);
-			// CmdProcessor.outwriter.println("Can't move!");
 		} else
 			pair.getAsteroid().accept(s);
 

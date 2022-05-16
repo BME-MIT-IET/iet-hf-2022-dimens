@@ -25,14 +25,9 @@ public abstract class Field {
 	 * Iterates through all the contained asteroids, end changes their sunClose attribute, if its needed
 	 */
 	public static void changeSunGroup(Asteroid k) {
-		//TODO
-		//itt kell majd hogy pontosan mennyi asteroidara akarjuk
-		//vagy hogy akkor most pontosan mi legyen az algoritmus az osszersre valamilyen esellyel, vagy csoportban
-		//if(CmdProcessor.isRandom) {
+
 			for(Asteroid a : asteroids) {
 				Random rnd = new Random();
-				//ezzel befojasolhatjuk hogy mekkor esellyel valtozzon meg
-				//most 50%
 				int n = rnd.nextInt(2);
 				if(n == 0) {
 					a.changeSunCLose();
@@ -41,15 +36,8 @@ public abstract class Field {
 					a.getCore().reveal(a);
 				}
 			}
-		/*}else {
-			k.changeSunCLose();
-			if(k.getNumOfLayers() == 0 && k.getCore() != null && k.getSunClose()) {
-				k.getCore().reveal(k);
-			}
-		}*/
 	}
-	
-	//ez most egy random asteroidat nez ki
+
 	/**
 	 * Represents the sun storm in the game.
 	 */
@@ -58,8 +46,7 @@ public abstract class Field {
 		int n = rnd.nextInt(asteroids.size());
 		asteroids.get(n).burn(3);
 	}
-	
-	//ki kell talalni, hogy fix ideig tartson mindig vagy valamennyire legyen e random
+
 	/**
 	 * Function that decreases the timer by one at the end of each turn
 	 * If the timer reaches 0 it will launch a sun storm.
@@ -82,21 +69,17 @@ public abstract class Field {
 			asteroids.clear();
 		}
 		Asteroid a = new Asteroid();
-		//addAsteroid(a);
 		for(int i = 0; i < 16; i++) {
 			Asteroid ab = new Asteroid();
-			//addAsteroid(ab);
+
 			asteroids.get(i).addNeighbour(asteroids.get(i+1));
 			asteroids.get(i+1).addNeighbour(asteroids.get(i));
 		}
 		asteroids.get(16).addNeighbour(asteroids.get(0));
 		asteroids.get(0).addNeighbour(asteroids.get(16));
 		Asteroid a17 = new Asteroid();
-		//addAsteroid(a17);
 		Asteroid a18 = new Asteroid();
-		//addAsteroid(a18);
 		Asteroid a19 = new Asteroid();
-		//addAsteroid(a19);
 		asteroids.get(17).addNeighbour(asteroids.get(18));
 		asteroids.get(18).addNeighbour(asteroids.get(17));
 		asteroids.get(7).addNeighbour(asteroids.get(18));
