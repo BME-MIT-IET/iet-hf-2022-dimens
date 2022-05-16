@@ -55,12 +55,12 @@ public abstract class Game {
 			for (Steppable each : steppables) {
 				if (steppedSettlers < numberOfSettlers) {
 					Settler settler = (Settler) each;
-					Thread t = Controller.ButtonClick(settler);
+					Thread t = Controller.buttonClick(settler);
 					try {
 						t.join();
 					}
 					catch(Exception e) {}
-					settler.step(Controller.COMMAND);
+					settler.step(Controller.getCommand());
 					steppedSettlers++;
 				} else {
 					each.step("");

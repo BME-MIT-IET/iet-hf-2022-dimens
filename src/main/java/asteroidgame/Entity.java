@@ -15,7 +15,7 @@ public abstract class Entity implements Steppable {
 	* 
 	* @param a the asteroid that the Entity is on
 	*/
-	public Entity(Asteroid a) {
+	protected Entity(Asteroid a) {
 		this.asteroid = a;
 		if (a != null) this.asteroid.accept(this);
 		Game.addSteppable(this);

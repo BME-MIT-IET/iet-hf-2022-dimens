@@ -84,20 +84,16 @@ public class AsteroidView{
 			material = material.substring(0,1);
 			material = material.toUpperCase();
 		}
+		StringBuilder builder = new StringBuilder();
 		for(int i = 0; i < asteroid.getEntities().size(); i++) {
-			entities = entities + Controller.getEntityNameByValue(asteroid.getEntities().get(i)) +", ";
+			builder.append(Controller.getEntityNameByValue(asteroid.getEntities().get(i))).append(", ");
 
 		}
-		if(entities != "") {
+		entities = builder.toString();
+		if(entities.equals("")) {
 			entities = entities.substring(0, entities.length() - 2);
 		}
-		/*for (HashMap.Entry<String, Asteroid> a : CmdProcessor.asteroids.entrySet()) {
-			String key = a.getKey();
-			Asteroid value = a.getValue();
-			if(value == asteroid) {
-				name = key;
-			}
-		}*/
+
 		for(int i=0;i<Field.getAsteroids().size();i++) {
 			if(asteroid.equals(Field.getAsteroids().get(i))) {
 				name="a"+(i+1);
