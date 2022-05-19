@@ -12,13 +12,20 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.3.3</version>
+            <version>${cucumber.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.3.3</version>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -35,7 +42,6 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-
 
     </dependencies>
 
@@ -63,6 +69,7 @@
 	</build>
 
     <properties>
+        <cucumber.version>7.3.3</cucumber.version>
 		<project.build.sourceEncoding>windows-1250</project.build.sourceEncoding>
         <sonar.organization>bme-mit-iet-org</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
