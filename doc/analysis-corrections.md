@@ -7,7 +7,7 @@ Idõközben rájöttünk, hogy elnéztük, és másik felhasználó kapott admin jogot, min
 félreértés után már gördülékenyen ment a felconfigolás, kiegészítettünk a `pom.xml` és `maven.yml` fájlokat.
 
 A SonarCloud felülete kijelezte a hibákat, ezek nagy részét javítottuk. Minden pusholáskor a GitHub Actions mellett a
-SonarCloud kiértékelõje is lefutott a GitHub felületén.
+SonarCloud kiértékelõje is lefutott a GitHub felületén. Az eredeti ~100 code smellt és bugot nagyjából 20-ra csökkentettük.
 
 ## Manuális kódátvizsgálás
 
