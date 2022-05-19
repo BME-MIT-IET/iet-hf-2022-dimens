@@ -1,16 +1,17 @@
-# SonarCloud és manuális kódátvizsgálás
+# SonarCloud ï¿½s manuï¿½lis kï¿½dï¿½tvizsgï¿½lï¿½s
 
 ## SonarCloud
 
-A SonarCloud-hoz való hozzáféréshez adminisztrátor jogot kellett kérnünk, miután ezt megkaptuk, elkezdtük felconfigolni.
-Idõközben rájöttünk, hogy elnéztük, és másik felhasználó kapott admin jogot, mint amire mi számítottunk. Ezután a
-félreértés után már gördülékenyen ment a felconfigolás, kiegészítettünk a `pom.xml` és `maven.yml` fájlokat.
+A SonarCloud-hoz valï¿½ hozzï¿½fï¿½rï¿½shez adminisztrï¿½tor jogot kellett kï¿½rnï¿½nk, miutï¿½n ezt megkaptuk, elkezdtï¿½k felconfigolni.
+Idï¿½kï¿½zben rï¿½jï¿½ttï¿½nk, hogy elnï¿½ztï¿½k, ï¿½s mï¿½sik felhasznï¿½lï¿½ kapott admin jogot, mint amire mi szï¿½mï¿½tottunk. Ezutï¿½n a
+fï¿½lreï¿½rtï¿½s utï¿½n mï¿½r gï¿½rdï¿½lï¿½kenyen ment a felconfigolï¿½s, kiegï¿½szï¿½tettï¿½nk a `pom.xml` ï¿½s `maven.yml` fï¿½jlokat.
 
-A SonarCloud felülete kijelezte a hibákat, ezek nagy részét javítottuk. Minden pusholáskor a GitHub Actions mellett a
-SonarCloud kiértékelõje is lefutott a GitHub felületén. Az eredeti ~100 code smellt és bugot nagyjából 20-ra csökkentettük.
+A SonarCloud felï¿½lete kijelezte a hibï¿½kat, ezek nagy rï¿½szï¿½t javï¿½tottuk. Minden pusholï¿½skor a GitHub Actions mellett a
+SonarCloud kiï¿½rtï¿½kelï¿½je is lefutott a GitHub felï¿½letï¿½n. Az eredeti ~100 code smellt ï¿½s bugot nagyjï¿½bï¿½l 20-ra csï¿½kkentettï¿½k.
 
-## Manuális kódátvizsgálás
+## Manuï¿½lis kï¿½dï¿½tvizsgï¿½lï¿½s
 
-A kódot manuálisan is átnéztük, de nem igazán találtunk olyan hibákat, amiket a SonarCloud analízise nem mutatott ki.
-Leginkább csak néhány kommentet módosítottunk, és néhány helyen átalakítottuk a tördelést. 
+A kï¿½dot manuï¿½lisan is ï¿½tnï¿½ztï¿½k, de nem igazï¿½n talï¿½ltunk olyan hibï¿½kat, amiket a SonarCloud analï¿½zise nem mutatott ki.
+Leginkï¿½bb csak nï¿½hï¿½ny kommentet mï¿½dosï¿½tottunk, ï¿½s nï¿½hï¿½ny helyen ï¿½talakï¿½tottuk a tï¿½rdelï¿½st. 
 
+![](images/analysiscorrections.png)
